@@ -81,7 +81,7 @@ public class LoginController extends HttpServlet {
         usuario.setContrasena(contrasena);
 
         try {
-            if (usuarioDAO.RegistrarUsuario(usuario)) {
+            if (usuarioDAO.registrarUsuario(usuario)) {
                 request.setAttribute("registroExitoso", true);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             } else {
@@ -100,7 +100,7 @@ public class LoginController extends HttpServlet {
         String contrasena = request.getParameter("contrasena");
 
         try {
-            Usuario usuario = usuarioDAO.Authenticate(correo, contrasena);
+            Usuario usuario = usuarioDAO.authenticate(correo, contrasena);
             if (usuario != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
