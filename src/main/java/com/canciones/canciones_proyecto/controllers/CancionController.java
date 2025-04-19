@@ -61,7 +61,7 @@ public class CancionController extends HttpServlet {
         List<Cancion> canciones = new ArrayList<>();
 
         try {
-            canciones = cancionDAO.GetAllCanciones();
+            canciones = cancionDAO.getAllCanciones();
         }catch (SQLException e) {
             e.getStackTrace();
         }
@@ -82,7 +82,7 @@ public class CancionController extends HttpServlet {
         Cancion canciones = null;
 
         try {
-            canciones = cancionDAO.GetCancionById(idCancion);
+            canciones = cancionDAO.getCancionById(idCancion);
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -158,10 +158,10 @@ public class CancionController extends HttpServlet {
 
         try {
             if (idCan == 0) {
-                cancionDAO.AddCancion(can);
+                cancionDAO.addCancion(can);
             }else {
                 can.setIdCancion(idCan);
-                cancionDAO.UpdateCancion(can);
+                cancionDAO.updateCancion(can);
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -174,7 +174,7 @@ public class CancionController extends HttpServlet {
         int idCanciones = Integer.parseInt(request.getParameter("id"));
 
         try {
-            cancionDAO.DeleteCancion(idCanciones);
+            cancionDAO.deleteCancion(idCanciones);
         }catch (SQLException e) {
             e.printStackTrace();
         }

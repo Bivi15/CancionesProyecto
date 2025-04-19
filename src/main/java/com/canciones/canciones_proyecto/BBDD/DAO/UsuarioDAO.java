@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UsuarioDAO {
 
-    public Usuario Authenticate(String correo, String contrasena) throws SQLException {
+    public Usuario authenticate(String correo, String contrasena) throws SQLException {
         String query = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
 
         Connection conn = BBDDConnector.GetInstance().GetConnection();
@@ -32,7 +32,7 @@ public class UsuarioDAO {
         return null;
     }
 
-    public boolean RegistrarUsuario(Usuario usuario) throws SQLException {
+    public boolean registrarUsuario(Usuario usuario) throws SQLException {
         String query = "INSERT INTO usuarios (nombre, apellido, correo, contrasena) VALUES (?, ?, ?, ?)";
 
         Connection conn = BBDDConnector.GetInstance().GetConnection();
@@ -56,7 +56,7 @@ public class UsuarioDAO {
         return rows > 0;
     }
 
-    public List<Usuario> GetAllUsuarios() throws SQLException {
+    public List<Usuario> getAllUsuarios() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
 
         String query = "SELECT id_usuario, nombre, apellido, correo FROM usuarios";
@@ -78,7 +78,7 @@ public class UsuarioDAO {
         return usuarios;
     }
 
-    public Usuario GetUsuarioByID(int id) throws SQLException {
+    public Usuario getUsuarioByID(int id) throws SQLException {
         Usuario usuario = null;
         String query = "SELECT id_usuario,nombre, apellido, correo FROM usuarios WHERE id_usuario = ?";
 
@@ -114,7 +114,7 @@ public class UsuarioDAO {
         return correo;
     }
 
-    public boolean AddUsuario(Usuario usuario) throws SQLException {
+    public boolean addUsuario(Usuario usuario) throws SQLException {
         String query = "INSERT INTO usuarios (nombre, apellido, correo, contrasena) VALUES (?, ?, ?, ?)";
 
         Connection conn = BBDDConnector.GetInstance().GetConnection();
@@ -137,7 +137,7 @@ public class UsuarioDAO {
         return rows > 0;
     }
 
-    public boolean UpdateUsuario(Usuario usuario) throws SQLException {
+    public boolean updateUsuario(Usuario usuario) throws SQLException {
         String query = "UPDATE usuarios SET nombre = ?, apellido = ?, correo = ?, contrasena = ? WHERE id_usuario = ?";
 
         Connection conn = BBDDConnector.GetInstance().GetConnection();
@@ -152,7 +152,7 @@ public class UsuarioDAO {
         return rows > 0;
     }
 
-    public boolean DeleteUsuario(int id) throws SQLException {
+    public boolean deleteUsuario(int id) throws SQLException {
         String query = "DELETE FROM usuarios WHERE id_usuario = ?";
 
         Connection conn = BBDDConnector.GetInstance().GetConnection();

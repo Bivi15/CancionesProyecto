@@ -59,7 +59,7 @@ public class UsuarioController extends HttpServlet {
         List<Usuario> usuarios = new ArrayList<>();
 
         try {
-            usuarios = usuarioDAO.GetAllUsuarios();
+            usuarios = usuarioDAO.getAllUsuarios();
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -92,10 +92,10 @@ public class UsuarioController extends HttpServlet {
 
         try {
             if (idUsuario == 0) {
-                usuarioDAO.AddUsuario(usuario);
+                usuarioDAO.addUsuario(usuario);
             }else {
                 usuario.setIdUsuario(idUsuario);
-                usuarioDAO.UpdateUsuario(usuario);
+                usuarioDAO.updateUsuario(usuario);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -108,7 +108,7 @@ public class UsuarioController extends HttpServlet {
         Usuario usuarios = null;
 
         try {
-            usuarios = usuarioDAO.GetUsuarioByID(idUsuario);
+            usuarios = usuarioDAO.getUsuarioByID(idUsuario);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -127,7 +127,7 @@ public class UsuarioController extends HttpServlet {
         if (idUsuario != null &&   !idUsuario.isEmpty()) {
             try {
                 int idUsua = Integer.parseInt(request.getParameter("id"));
-                usuarioDAO.DeleteUsuario(idUsua);
+                usuarioDAO.deleteUsuario(idUsua);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

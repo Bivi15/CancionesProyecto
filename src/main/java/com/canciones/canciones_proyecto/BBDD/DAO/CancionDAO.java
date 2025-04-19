@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CancionDAO {
 
-    public List<Cancion> GetAllCanciones() throws SQLException {
+    public List<Cancion> getAllCanciones() throws SQLException {
         List<Cancion> canciones = new ArrayList<>();
 
         String sql = "SELECT * FROM canciones";
@@ -37,7 +37,7 @@ public class CancionDAO {
         return canciones;
     }
 
-    public Cancion GetCancionById(int id) throws SQLException {
+    public Cancion getCancionById(int id) throws SQLException {
         Cancion c = null;
         String sql = "SELECT * FROM canciones WHERE id_cancion = ?";
 
@@ -76,7 +76,7 @@ public class CancionDAO {
         return usuarioId;
     }
 
-    public boolean AddCancion(Cancion cancion) throws SQLException {
+    public boolean addCancion(Cancion cancion) throws SQLException {
         String sql = "INSERT INTO canciones (titulo, artista, album, genero, anio_lanzamiento, usuario_id) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = BBDDConnector.GetInstance().GetConnection();
@@ -92,7 +92,7 @@ public class CancionDAO {
         return rows > 0;
     }
 
-    public boolean UpdateCancion(Cancion cancion) throws SQLException {
+    public boolean updateCancion(Cancion cancion) throws SQLException {
         String sql = "UPDATE canciones SET titulo = ?, artista = ?, album = ?, genero = ?, anio_lanzamiento = ?, usuario_id = ? WHERE id_cancion = ?";
 
         Connection conn = BBDDConnector.GetInstance().GetConnection();
@@ -109,7 +109,7 @@ public class CancionDAO {
         return rows > 0;
     }
 
-    public boolean DeleteCancion(int id) throws SQLException {
+    public boolean deleteCancion(int id) throws SQLException {
         String sql = "DELETE FROM canciones WHERE id_cancion = ?";
 
         Connection conn = BBDDConnector.GetInstance().GetConnection();
