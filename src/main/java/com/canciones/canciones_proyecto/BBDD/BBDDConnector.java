@@ -9,7 +9,7 @@ public class BBDDConnector {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/musica_proyecto?autoReconnect=true&useSSL=false";
     private Connection connection;
     private static final String USER = "root";
-    private static final String PASS = "Simon2026*";
+    private static final String PASS = "root";
 
     public BBDDConnector() {
         try {
